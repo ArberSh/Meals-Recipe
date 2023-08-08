@@ -1,30 +1,24 @@
-async function main(){
-    const input = document.querySelector("input")
-    const text = document.querySelector("#text")
-    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${input.value}`)
-    const data = await response.json()
-    console.log(data)
-    let meal = data.meals 
-    let namesArray = meal.map(person => person.strMeal);
-    if(input.value === "" || !meal){
-        
-            text.innerHTML = " Please Write something "
-             return;
-        
-      
-    }
-    else{
-           
-               text.innerHTML =`
-               <div id="lol"> 
-               <hi id="meal">${namesArray}</hi
-               </div>
-               `
-    }
-        }
-    
-    
-main()
+async function main() {
+  const input = document.querySelector("input").value;
+  const response = await fetch(
+    `https://www.themealdb.com/api/json/v1/1/search.php?s=${input}`
+  );
+  const data = await response.json();
+  const text = document.querySelector("#text");
+  const prove = document.querySelector("#test");
+  let meal = data.meals;
+  if (input === "" || !meal) {
+    text.innerHTML = " Please Write something ";
+    return;
+  }
+  text.innerHTML = meal.map((element)=>{
+    return `<div id="sup">
+    <h1>${element.strMeal}</h1>
+    </div>`;
+  }).join("");
+  
+}
+main();
 
 // let arr = [
 //   {
