@@ -4,19 +4,22 @@ async function main() {
     `https://www.themealdb.com/api/json/v1/1/search.php?s=${input}`
   );
   const data = await response.json();
-  const text = document.querySelector("#text");
+  const mealWrapper = document.querySelector(".Meal--wrapper");
   const prove = document.querySelector("#test");
+  console.log(data);
   let meal = data.meals;
   if (input === "" || !meal) {
-    text.innerHTML = " Please Write something ";
+    prove.innerHTML = " Please Write something ";
     return;
   }
-  text.innerHTML = meal.map((element)=>{
-    return `<div id="sup">
+  mealWrapper.innerHTML = meal
+    .map((element) => {
+      return `<a href="#"><div id="sup">
+    <img src="${element.strMealThumb}" alt="">
     <h1>${element.strMeal}</h1>
-    </div>`;
-  }).join("");
-  
+    </div></a>`;
+    })
+    .join("");
 }
 main();
 
