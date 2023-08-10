@@ -7,18 +7,30 @@
     <title>Meal</title>
     <script src="app.js" defer></script>
     <link rel="stylesheet" href="style.css" />
+    <script
+      scr="https://kit.fontawesome.com/c8e4d183c2.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <section class="Search">
       <main>
         <div class="Description"></div>
         <div class="Search-Bar-wrapper">
-          <input type="text" />
-          <button onclick="main()">Search</button>
+          <tr>
+            <td>
+              <div class="input--group">
+                <input type="text" />
+                <button onclick="main()">
+                  <img class="search-logo" src="search.svg" alt="" />
+                </button>
+              </div>
+            </td>
+          </tr>
         </div>
         <div class="Meal--wrapper">
-        <h1 id="text"></h1>
-        <h1 id="test"></h1>
+          <h1 id="text"></h1>
+          <h1 id="test"></h1>
         </div>
       </main>
     </section>

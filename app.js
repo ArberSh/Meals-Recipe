@@ -16,8 +16,11 @@ async function main() {
     .map((element) => {
       return `<a href="#"><div id="sup">
     <img src="${element.strMealThumb}" alt="">
+    <div class="textCenter">
     <h1>${element.strMeal}</h1>
-    </div></a>`;
+    </div>
+    </div>
+    </a>`;
     })
     .join("");
 }
