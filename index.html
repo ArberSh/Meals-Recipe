@@ -7,26 +7,54 @@
     <title>Meal</title>
     <script src="app.js" defer></script>
     <link rel="stylesheet" href="style.css" />
-    <script
-      scr="https://kit.fontawesome.com/c8e4d183c2.js"
-      crossorigin="anonymous"
-    ></script>
   </head>
   <body>
+    <nav>
+      <div class="nav-wrapper">
+        <div class="logo-wrapper">
+          <figure>
+            <img class="logo" src="logo1.png" alt="">
+          </figure>
+        </div>
+        <div class="search-wrapper">
+          <a class="link-app" href="#">
+            <div class="instagram">
+              <img src="twitter.svg" alt="">
+            </div>
+          </a>
+          <a class="link-app" href="#">
+            <div class="instagram">
+              <img src="facebook-f.svg" alt="">
+            </div>
+          </a>
+          <a class="link-app" href="#">
+            <div class="instagram">
+              <img src="instagram.svg" alt="">
+            </div>
+          </a>
+          <input id="input" placeholder="Search for a recipe" class="input-nav" type="text" />
+                  <button class="button-nav" onclick="main()">
+                    <img class="search-logo" src="search.svg" alt="" />
+                  </button>
+        </div>
+      </div>
+    </nav>
     <section class="Search">
       <main>
-        <div class="Description"></div>
-        <div class="Search-Bar-wrapper">
-          <tr>
-            <td>
-              <div class="input--group">
-                <input type="text" />
-                <button onclick="main()">
-                  <img class="search-logo" src="search.svg" alt="" />
-                </button>
-              </div>
-            </td>
-          </tr>
+        <div class="wallpaper">
+          <h1 class="Title">Find a Recipe</h1>
+          <p>
+            Find <span>+10,000 good & delicious</span> recipe and start your
+            amazing journey healthy food with us
+          </p>
+          <div class="Search-Bar-wrapper">
+                <div class="input--group">
+                  <input placeholder="Search for a recipe" id="input" type="text" />
+                  <button onclick="main()">
+                    <img class="search-logo" src="search.svg" alt="" />
+                  </button>
+                </div>
+          </div>
         </div>
         <div class="Meal--wrapper">
           <h1 id="text"></h1>

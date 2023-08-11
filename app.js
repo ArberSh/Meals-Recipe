@@ -1,5 +1,5 @@
 async function main() {
-  const input = document.querySelector("input").value;
+  const input = document.querySelector("#input").value;
   const response = await fetch(
     `https://www.themealdb.com/api/json/v1/1/search.php?s=${input}`
   );
@@ -9,7 +9,7 @@ async function main() {
   console.log(data);
   let meal = data.meals;
   if (input === "" || !meal) {
-    prove.innerHTML = " Please Write something ";
+    mealWrapper.innerHTML = `<h1 class="message">Please Make sure you write correct</h1>`;
     return;
   }
   mealWrapper.innerHTML = meal
@@ -25,19 +25,3 @@ async function main() {
     .join("");
 }
 main();
-
-// let arr = [
-//   {
-//     lale: 1,
-//     njish: "LOL",
-//     skidibum: 3,
-//     skrrraa: 4,
-//   },
-//   {
-//     njish: "LMAO",
-//     Oplk: 3,
-//     ueeee: 2,
-//   },
-// ];
-// let namesArray = arr.map(person => person.njish);
-// console.log(namesArray);
