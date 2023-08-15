@@ -1,47 +1,3 @@
-// const input = document.querySelector("#input");
-// const input1 = document.querySelector("#input1");
-
-// async function main() {
-//   const response = await fetch(
-//     `https://www.themealdb.com/api/json/v1/1/search.php?s=${input.value || input1.value}`);
-  
-//     const data = await response.json();
-//   const mealWrapper = document.querySelector(".Meal--wrapper");
-//   let meal = data.meals;
-//   if (input.value.trim() === '' || !meal) {
-//     console.log("SHKRUJE R DREQ");
-//   } 
-//   else {
-
-//   }
-
-//   mealWrapper.innerHTML = meal
-//     .map((element) => {
-//       return `<a class="Meal-Link" href="#"><div id="sup">
-//     <img src="${element.strMealThumb}" alt="">
-//     <div class="textCenter">
-//     <h1>${element.strMeal}</h1>
-//     </div>
-//     </div>
-//     </a>`;
-//     })
-//     .join("");
-// }
-
-// function button1(){
-//   main()
-//   input.value = '';
-// }
-
-// function button2(){
-//   if (input1.value.trim() === '') {
-//     console.log("SHKRUJE R DREQ");
-//   } else {
-//     main()
-//   }
-//   input1.value = '';
-  
-// }
 
 const apiUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s="
 
@@ -55,9 +11,11 @@ async function main(meals){
   const response = await fetch(apiUrl + meals);
    const data = await response.json();
    let meal = data.meals;
-  if(input.value.trim() === '' || !meal){
-    mealWrapper.style.display = "none"
-   
+  if(!data || !data.meals || data.meals.length === 0){
+    console.log("works")
+    console.log("Before:", mealWrapper.style.display);
+    mealWrapper.style.display = "none";
+    console.log("After:", mealWrapper.style.display);
   }
   else{ 
     mealWrapper.style.display = "flex"
@@ -78,8 +36,18 @@ async function main(meals){
   input.value = '';
 }
 function bt(){
+  if(input.value.trim() === ''){
+    console.log("error")
+  }
+  else{
   main(input.value)
+  }
 }
 function bt1(){
-  main(input1.value)
+  if(input1.value.trim() === ''){
+    console.log("error")
+  }
+  else{
+    main(input1.value)
+  }
 }
