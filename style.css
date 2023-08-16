@@ -118,6 +118,10 @@ p{
 }
 .message{
   display: none;
+  color: white;
+  font-size: 19px;
+  text-align: center;
+  margin-top: 1rem;
 }
 #sup{
     padding: 1rem;
@@ -142,6 +146,11 @@ p{
   justify-content: center;
   height: 4.6rem;
 }
+
+.Meal--Section{
+  display: none;
+}
+
 .Meal--wrapper{
     margin: 0 3rem;
     display: flex;
