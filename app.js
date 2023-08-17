@@ -13,7 +13,6 @@ async function main(meals){
    const data = await response.json();
    let meal = data.meals;
    
-   mealWrapper.innerHTML = `<h1>You searched "THIS?"</h1>`
    
    if(!data || !data.meals || data.meals.length === 0){
      MealSection.style.dispaly = "block"
@@ -22,13 +21,12 @@ async function main(meals){
      
     }
     else{ 
-      MealSection.style.display = "block"
-      MealSection.style.padding = "6rem 0 0 0"
+      mealWrapper.style.padding = "6rem 0 0 0"
       mealWrapper.style.display = "flex"
       document.querySelector(".wallpaper").style.display = "none"
       
       mealWrapper.innerHTML = meal.map((element) => {
-        return `<a class="Meal-Link" href="#"><div id="sup">
+        return `<a class="Meal-Link" href="Food.html"><div id="sup">
         <img src="${element.strMealThumb}" alt="">
         <div class="textCenter">
         <h1>${element.strMeal}</h1>
@@ -56,4 +54,11 @@ function bt1(){
   else{
     main(input1.value)
   }
+}
+async function MealsInformation(StrMeal){
+  const response = await fetch(apiUrl + StrMeal);
+  const data = await response.json();
+  let meal = data.meals;
+  StrMeal = meal.strMeal
+  console.log(StrMeal)
 }

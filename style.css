@@ -17,6 +17,7 @@ span{
   background-color: white;
   box-shadow: 5px 5px 10px 2px #0000003e;
   height: 4rem;
+
 }
 .logo{
   width:6.5rem;
@@ -149,6 +150,10 @@ p{
 
 .Meal--Section{
   display: none;
+  margin: 0 3rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .Meal--wrapper{
