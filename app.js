@@ -26,7 +26,7 @@ async function main(meals){
       document.querySelector(".wallpaper").style.display = "none"
       
       mealWrapper.innerHTML = meal.map((element) => {
-        return `<a class="Meal-Link" href="Food.html"><div id="sup">
+        return `<a class="Meal-Link" href="MealInfo.html"><div id="sup">
         <img src="${element.strMealThumb}" alt="">
         <div class="textCenter">
         <h1>${element.strMeal}</h1>
@@ -55,10 +55,14 @@ function bt1(){
     main(input1.value)
   }
 }
-async function MealsInformation(StrMeal){
-  const response = await fetch(apiUrl + StrMeal);
-  const data = await response.json();
-  let meal = data.meals;
-  StrMeal = meal.strMeal
-  console.log(StrMeal)
+if (window.location.pathname.includes("MealInfo.html")) {
+  console.log("Mesazh nga JavaScript vetëm për meal.html.");
+  async function mani(){
+    const response = await fetch(apiUrl);
+     const data = await response.json();
+     let meal = data.meals;
+     
+     meal.map((element) => {return console.log(element.strMeal)})
+     
+}mani()
 }
