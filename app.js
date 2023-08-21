@@ -1,29 +1,33 @@
 
 const apiUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s="
 
+//index.Html
 const input = document.querySelector("#input")
 const input1 = document.querySelector("#input1")
-const mealWrapper = document.querySelector(".Meal--wrapper");
 const wallpaper = document.querySelector(".wallpaper");
 const message = document.querySelector(".message")
 const MealSection = document.querySelector(".Meal--Section")
 
+//Results.html
+const inputResult = document.querySelector("#input2") 
+const mealWrapper = document.querySelector(".Meal--wrapper");
 async function main(meals){
   const response = await fetch(apiUrl + meals);
    const data = await response.json();
    let meal = data.meals;
-   
-   
+   inputResult.value === input1
+   console.log(inputResult.value)
    if(!data || !data.meals || data.meals.length === 0){
-     MealSection.style.dispaly = "block"
-     mealWrapper.style.display = "none"
-     wallpaper.style.display = "none";
+    //  MealSection.style.display = "block"
+    mealWrapper.style.display = "none"
+    console.log("Nope it doesnt exist!!")
+    //  wallpaper.style.display = "none";
      
     }
     else{ 
       mealWrapper.style.padding = "6rem 0 0 0"
       mealWrapper.style.display = "flex"
-      document.querySelector(".wallpaper").style.display = "none"
+      // document.querySelector(".wallpaper").style.display = "none"
       
       mealWrapper.innerHTML = meal.map((element) => {
         return `<a class="Meal-Link" href="MealInfo.html?meals=${element.strMeal}"><div id="sup">
@@ -39,29 +43,30 @@ async function main(meals){
     } 
     
   input1.value = '';
-  input.value = '';
- 
+  input2.value = '';
+ console.log(input1)
   }
  
-  
-  function bt(){
-    if(input.value.trim() === ''){
-      message.style.display = "block"
-  }
-  else{
-    main(input.value)
-  }
-}
-function bt1(){
-  if(input1.value.trim() === ''){
+  if (window.location.pathname.includes("MealInfo.html")){
+      console.log("hi")
+    
+    }
+    function bt2(){
+  if(input2.value.trim() === ''){
     message.style.display = "block"
   }
   else{
-    main(input1.value)
+    main(input2.value)
   }
 }
+
       if (window.location.pathname.includes("MealInfo.html")){
       console.log("hi")
       main()
-      console.log(main())
+      
+    }
+
+    if (window.location.pathname.includes("Results.html")){
+      console.log("hi")
+      main()
     }
