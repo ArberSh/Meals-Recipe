@@ -124,7 +124,7 @@ p{
   text-align: center;
   margin-top: 1rem;
 }
-#sup{
+#Meals{
     padding: 1rem;
     background-color: antiquewhite;
     font-size: 12px;
@@ -136,7 +136,7 @@ p{
     justify-content: center;
     
 }
-#sup img{
+#Meals img{
     width: 16vw;
     border-radius: 0.6rem;
 
@@ -157,9 +157,10 @@ p{
 }
 
 .Meal--wrapper{
+    padding-top: 8%;
     margin: 0 3rem;
-    display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
+    display: none;
 }
