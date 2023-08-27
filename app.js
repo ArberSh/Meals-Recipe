@@ -60,40 +60,71 @@
 //   }
 // }
 
+const apiUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s="
 
 const wallpaper = document.querySelector(".wallpaper")
 const mealWrapper = document.querySelector(".Meal--wrapper");
 const input = document.getElementById("input")
 const input1 = document.getElementById("input1")
+const message = document.querySelector(".message")
+const InfoWrapper = document.querySelector(".Information-wrapper")
 
-async function meal(){
-  const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${input.value}`)
+async function meal(meals){
+  const response = await fetch(apiUrl + meals)
   const data = await response.json()
   let meal = data.meals
   reset()
-  console.log(meal)
   wallpaper.style.display = "none"
   mealWrapper.style.display = "flex"
-   
-  if(!meal || input.value.trim() === ''){
-    mealWrapper.innerHTML = `<h1 class="Result-msg">There's no meal that starts with "${input.value}"</h1>`
+  if(!meal){
+    mealWrapper.innerHTML = `<h1 class="Result-msg">There's no meal that starts with "${input.value || input1.value}"</h1>`
   }
   else{
-    mealWrapper.innerHTML = meal.map((element) => {
-             return `<a class="Meal-Link" href="MealInfo.html?meals=${element.strMeal}"><div id="Meals">
-             <img src="${element.strMealThumb}" alt="">
-            <div class="textCenter">
-             <h1>${element.strMeal}</h1>
-             </div>
-             </div>
-            </a>`;
-          })
-          .join(""); 
-          
-}input.value = ''
+    mealWrapper.innerHTML = meal
+  .map((element) => {
+    return `
+      <div class="Meal-Link" onclick="test('${element.strMeal}')">
+        <!-- ... -->
+      </div>`;
+  })
+  .join("");
+  
+}
+  input.value = ''
+  console.log(meals)
 }
 function reset(){
   mealWrapper.innerHTML = ''
+  InfoWrapper.style.display = "none"
 }
+
+function bt1(){
+
+       if(input.value.trim() === ''){
+         message.style.display = "block"
+      }
+       else{
+        meal(input.value)
+       }
+     }
+function bt2(){
+
+      if(input1.value.trim() === ''){
+        message.style.display = "block"
+     }
+      else{
+       meal(input1.value)
+      }
+    }
+
+    function test(data) {
+      const selectedMeal = meal.find(element => element.strMeal === data);
+      if (selectedMeal) {
+        InfoWrapper.style.display = "block";
+        mealWrapper.style.display = "none";
+        showRecipeDetails(selectedMeal);
+      }
+    }
+
 
     
