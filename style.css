@@ -167,3 +167,7 @@ p{
 .Information-wrapper{
   display: none;
 }
+.PhotoMeal{
+  width: 20vw;
+  height: 20vh;
+}
