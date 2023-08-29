@@ -6,6 +6,8 @@ const input = document.getElementById("input")
 const input1 = document.getElementById("input1")
 const message = document.querySelector(".message")
 const InfoWrapper = document.querySelector(".Information-wrapper")
+const Title = document.querySelector(".TitleMeal")
+const Steps_P = document.querySelector(".steps-p")
 
 let meal = []
 
@@ -20,7 +22,7 @@ async function getmeal(meals){
     mealWrapper.innerHTML = `<h1 class="Result-msg">There's no meal that starts with "${input.value || input1.value}"</h1>`;
   } else {
     mealWrapper.innerHTML = meal.map((element) => {
-      return `<div class="Meal-Link"onclick="test('${element.idMeal}')"><div id="Meals">
+      return `<div class="Meal-Link"onclick="getId('${element.idMeal}')"><div id="Meals">
       <img src="${element.strMealThumb}" alt="">
       <div class="textCenter" >
        <h1>${element.strMeal}</h1>
@@ -57,10 +59,10 @@ function bt2(){
       }
     }
 
-    function test(id) {
+    function getId(id) {
       const selectedMeal = meal.find(element => element.idMeal === id);
       if (selectedMeal) {
-        InfoWrapper.style.display = "block";
+        InfoWrapper.style.display = "flex";
         mealWrapper.style.display = "none";
         showRecipeDetails(selectedMeal);  
       }
@@ -68,9 +70,10 @@ function bt2(){
     }
     
     function showRecipeDetails(data) {
-      document.querySelector(".Title").textContent = data.strMeal;
 
-      
+      titleShorter(data.strMeal)
+      Title.textContent = data.strMeal
+         
       const ImageMeal = document.querySelector(".PhotoMeal")
       ImageMeal.src = data.strMealThumb
       
@@ -78,8 +81,10 @@ function bt2(){
       ingredientList.innerHTML = generateIngredientList(data);
       
       const steps = document.querySelector(".steps-meal p");
+      textShorter(data.strInstructions)
       steps.textContent = data.strInstructions;
-      console.log(data.strMealThumb)
+      
+
     }
     function generateIngredientList(data) {
       let ingredientList = "";
@@ -91,5 +96,30 @@ function bt2(){
       return ingredientList;
     }
 
+    function textShorter(text){
+      
+      let MaxText = 600
+      if(text.length > MaxText){
+        Steps_P.style.width = "40rem"
+        Steps_P.style.fontsize = "15px"
+      }else{
+        Steps_P.style.width = "30rem"
+        Steps_P.style.fontsize = "16px"
+      }
+
+      return text
+      
+    }
+    function titleShorter(title){
+      
+      if(title.length > 12){
+        Title.style.fontsize = "20px"
+      }else{
+        Title.style.fontsize = "46px"
+      }
+      console.log(title.length)
+      return title
+      
+    }
 
     
