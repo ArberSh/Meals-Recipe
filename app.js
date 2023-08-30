@@ -8,6 +8,7 @@ const message = document.querySelector(".message")
 const InfoWrapper = document.querySelector(".Information-wrapper")
 const Title = document.querySelector(".TitleMeal")
 const Steps_P = document.querySelector(".steps-p")
+const wallpaperMeal = document.querySelector(".Wallpaper")
 
 let meal = []
 
@@ -18,7 +19,8 @@ async function getmeal(meals){
   reset();
   wallpaper.style.display = "none";
   mealWrapper.style.display = "flex";
-  if (!meal.length) {
+  wallpaperMeal.style.display = "block"
+  if (!meal) {
     mealWrapper.innerHTML = `<h1 class="Result-msg">There's no meal that starts with "${input.value || input1.value}"</h1>`;
   } else {
     mealWrapper.innerHTML = meal.map((element) => {
@@ -38,12 +40,14 @@ async function getmeal(meals){
 function reset(){
   mealWrapper.innerHTML = ''
   InfoWrapper.style.display = "none"
+  wallpaperMeal.style.display = "none"
 }
 
 function bt1(){
 
        if(input.value.trim() === ''){
          message.style.display = "block"
+         mealWrapper.innerHTML = `<h1 class="Result-msg">Please Write Something</h1>`;
       }
        else{
         getmeal(input.value)
@@ -53,6 +57,7 @@ function bt2(){
 
       if(input1.value.trim() === ''){
         message.style.display = "block"
+        mealWrapper.innerHTML = `<h1 class="Result-msg">Please Write Something</h1>`;
      }
       else{
        getmeal(input1.value)
@@ -64,6 +69,7 @@ function bt2(){
       if (selectedMeal) {
         InfoWrapper.style.display = "flex";
         mealWrapper.style.display = "none";
+        wallpaperMeal.style.display = "none"
         showRecipeDetails(selectedMeal);  
       }
       console.log(meal)
@@ -101,10 +107,10 @@ function bt2(){
       let MaxText = 600
       if(text.length > MaxText){
         Steps_P.style.width = "40rem"
-        Steps_P.style.fontsize = "15px"
+        Steps_P.style.fontSize = "15px"
       }else{
         Steps_P.style.width = "30rem"
-        Steps_P.style.fontsize = "16px"
+        Steps_P.style.fontSize = "16px"
       }
 
       return text
@@ -112,10 +118,10 @@ function bt2(){
     }
     function titleShorter(title){
       
-      if(title.length > 12){
-        Title.style.fontsize = "20px"
+      if(title.length > 16){
+        Title.style.fontSize = "30px"
       }else{
-        Title.style.fontsize = "46px"
+        Title.style.fontSize = "40px"
       }
       console.log(title.length)
       return title
