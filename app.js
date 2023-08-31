@@ -27,7 +27,8 @@ async function getmeal(meals){
       return `<div class="Meal-Link"onclick="getId('${element.idMeal}')"><div id="Meals">
       <img src="${element.strMealThumb}" alt="">
       <div class="textCenter" >
-       <h1>${element.strMeal}</h1>
+       <h1 style="font-family: 'Playfair Display', serif;
+       font-family: 'Poppins', sans-serif;">${element.strMeal}</h1>
        </div>
        </div>
       </div>`;
@@ -127,5 +128,15 @@ function bt2(){
       return title
       
     }
+input.addEventListener("keyup",function(element){
+  if(event.keyCode === 13){
+    getmeal(input.value)
+  }
+} )
+input1.addEventListener("keyup",function(element){
+  if(event.keyCode === 13){
+    getmeal(input1.value)
+  }
+} )
 
     
